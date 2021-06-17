@@ -93,7 +93,7 @@ class ProductQuestions(models.CharField):
     is_active = models.IntegerField(default=1)
 
 
-class ProductReviews(models.CharField):
+class ProductReviews(models.Model):
     product_id = models.ForeignKey(Products, on_delete=models.CASCADE)
     user_id = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     review_image = models.FileField()
@@ -102,7 +102,7 @@ class ProductReviews(models.CharField):
     is_active = models.IntegerField(default=1)
 
 
-class ProductReviewVoting(models.CharField):
+class ProductReviewVoting(models.Model):
     product_review_id = models.ForeignKey(ProductReviews, on_delete=models.CASCADE)
     user_id_voting = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     rating = models.CharField(max_length=5)
