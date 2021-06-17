@@ -69,23 +69,23 @@ class ProductTransaction(models.Model):
     transaction_type = models.FileField(choices=transaction_type_choices, max_length=255)
     transaction_description = models.FileField(max_length=255)
 
-class ProductDetails(models.CharField):
+class ProductDetails(models.Model):
     product_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     title_details = models.CharField(max_length=255)
     is_active = models.IntegerField(default=1)
 
-class ProductAbout(models.CharField):
+class ProductAbout(models.Model):
     product_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     is_active = models.IntegerField(default=1)
 
-class ProductTags(models.CharField):
+class ProductTags(models.Model):
     product_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     is_active = models.IntegerField(default=1)
 
-class ProductQuestions(models.CharField):
+class ProductQuestions(models.Model):
     product_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     user_id = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     question = models.TextField()
@@ -105,7 +105,7 @@ class ProductReviews(models.Model):
 class ProductReviewVoting(models.Model):
     product_review_id = models.ForeignKey(ProductReviews, on_delete=models.CASCADE)
     user_id_voting = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
-    rating = models.CharField(max_length=5)
+    rating = models.CharField(default="5", max_length=255)
     review = models.TextField(max_length=255)
     is_active = models.IntegerField(default=1)
 
